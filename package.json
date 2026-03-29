@@ -1,0 +1,15 @@
+{
+  "name": "highlight-saver",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.263",
+    "@types/node": "^25.5.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
+  }
+}

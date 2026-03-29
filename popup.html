@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Highlights</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/popup.css">
+</head>
+<body>
+  <div class="app-container">
+    <div class="header">
+      <div class="header-main">
+        <h1>Highlights</h1>
+        <div class="badge"><span id="count">0</span></div>
+      </div>
+      <div class="actions">
+        <button id="summarize-btn" class="btn primary outline" title="Summarize all with AI">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Summarize All
+        </button>
+        <button id="detach-btn" class="btn icon-btn" title="Lock Window (Pop-out)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </button>
+        <button id="settings-btn" class="btn icon-btn" title="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Layouts -->
+    <div id="settings-panel" class="panel hidden">
+      <h3>Groq AI Setup</h3>
+      <p class="desc">Enter your Groq API Key to enable instant AI summaries.</p>
+      <input type="password" id="api-key-input" placeholder="gsk_..." spellcheck="false" />
+      <div class="panel-actions">
+        <button id="save-key-btn" class="btn primary">Save Key</button>
+        <button id="close-settings-btn" class="btn text">Cancel</button>
+      </div>
+    </div>
+
+    <div id="summary-panel" class="panel hidden blur-bg">
+      <div class="panel-header">
+        <h3>✨ AI Insight</h3>
+        <button id="close-summary-btn" class="btn icon-btn icon-small" title="Close">×</button>
+      </div>
+      <div id="summary-content">
+        <div class="loading">
+          <div class="spinner"></div><span class="loading-text">Analyzing highlights...</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="highlights-list" class="scroll-area">
+      <!-- Cards rendered via JS -->
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="delete-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <h3>Delete Highlight</h3>
+      <p>Are you sure you want to permanently delete this highlight?</p>
+      <div class="modal-actions">
+        <button id="cancel-delete-btn" class="btn text">Cancel</button>
+        <button id="confirm-delete-btn" class="btn danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/popup.ts"></script>
+</body>
+</html>
